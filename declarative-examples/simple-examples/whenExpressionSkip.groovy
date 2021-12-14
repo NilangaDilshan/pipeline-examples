@@ -1,21 +1,19 @@
 pipeline {
-  agent any
+  agents any
   stages {
-    stage("Hello") {
+    stage('build') {
       steps {
-        echo "Hello"
+        echo 'Build stage'
       }
     }
-    stage("Always Skip") {
-      when {
-        // skip this stage unless the expression evaluates to 'true'
-        expression {
-          echo "Should I run?"
-          return false
-        }
-      }
+    stage('test') {
       steps {
-        echo "World"
+        echo 'Test stage'
+      }
+    }
+    stage('deploy') {
+      steps {
+        echo 'Deployment stage'
       }
     }
   }
